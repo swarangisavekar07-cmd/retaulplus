@@ -1,0 +1,13 @@
+retailpulse_profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('GCP_PROJECT_ID', 'retailpulse-demo-project') }}"
+      dataset: "{{ env_var('BIGQUERY_ANALYTICS_DATASET', 'analytics_retailpulse') }}"
+      threads: 4
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS', 'config/gcp-key.json') }}"
+      timeout_seconds: 300
+      location: "{{ env_var('GCP_LOCATION', 'US') }}"
+      priority: interactive

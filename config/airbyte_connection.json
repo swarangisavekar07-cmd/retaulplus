@@ -1,0 +1,43 @@
+{
+  "name": "RetailPulse_Postgres_to_BigQuery_Sync",
+  "prefix": "",
+  "namespaceDefinition": "destination",
+  "namespaceFormat": "${BIGQUERY_RAW_DATASET}",
+  "status": "active",
+  "scheduleType": "manual",
+  "syncCatalog": {
+    "streams": [
+      {
+        "stream": {
+          "name": "retail_sales",
+          "namespace": "public",
+          "jsonSchema": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "integer" },
+              "order_id": { "type": "string" },
+              "order_date": { "type": "string", "format": "date" },
+              "customer_id": { "type": "string" },
+              "customer_name": { "type": ["null", "string"] },
+              "product_id": { "type": "string" },
+              "product_name": { "type": "string" },
+              "category": { "type": "string" },
+              "region": { "type": "string" },
+              "quantity": { "type": "integer" },
+              "unit_price": { "type": "number" },
+              "payment_status": { "type": ["null", "string"] },
+              "created_at": { "type": "string", "format": "date-time" }
+            }
+          },
+          "supportedSyncModes": ["full_refresh", "incremental"],
+          "sourceDefinedPrimaryKey": [["id"]]
+        },
+        "config": {
+          "syncMode": "full_refresh",
+          "destinationSyncMode": "overwrite",
+          "selected": true
+        }
+      }
+    ]
+  }
+}

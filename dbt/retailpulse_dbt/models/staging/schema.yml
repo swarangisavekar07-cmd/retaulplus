@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: stg_retail_sales
+    description: "Cleaned and deduplicated staging view of retail sales transactions"
+    columns:
+      - name: order_id
+        description: "Primary business key for the transaction"
+        tests:
+          - unique
+          - not_null
+
+      - name: order_date
+        description: "Standardized transaction date"
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: "Standardized customer identifier"
+        tests:
+          - not_null
+
+      - name: customer_name
+        description: "Customer name with nulls defaulted to 'Guest Customer'"
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "Product SKU identifier"
+        tests:
+          - not_null
+
+      - name: product_name
+        description: "Human-readable merchandise title"
+        tests:
+          - not_null
+
+      - name: category
+        description: "Product merchandise category"
+        tests:
+          - not_null
+
+      - name: region
+        description: "Sales territory"
+        tests:
+          - not_null
+
+      - name: quantity
+        description: "Units ordered"
+        tests:
+          - not_null
+          - non_negative
+
+      - name: unit_price
+        description: "Price per unit in USD"
+        tests:
+          - not_null
+          - non_negative
+
+      - name: revenue
+        description: "Gross revenue calculated as quantity * unit_price"
+        tests:
+          - not_null
+          - non_negative
+
+      - name: payment_status
+        description: "Normalized transaction payment status"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Completed', 'Pending', 'Cancelled', 'Refunded']

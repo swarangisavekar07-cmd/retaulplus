@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables and Cloud credentials
+.env
+config/gcp-key.json
+*.json
+!config/airbyte_*.json
+!config/gcp-key.json.example
+
+# dbt artifacts
+dbt/retailpulse_dbt/target/
+dbt/retailpulse_dbt/dbt_packages/
+dbt/retailpulse_dbt/logs/
+
+# Airflow logs and metastore
+airflow/logs/
+airflow/airflow.db
+airflow/airflow.cfg
+
+# Local Analytical Warehouse Replica databases
+data/*.duckdb
+data/*.duckdb.wal
+data/*.sqlite3
+
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

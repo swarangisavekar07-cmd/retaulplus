@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: mart_sales_summary
+    description: "Multidimensional aggregation mart of retail sales across dimensions"
+    columns:
+      - name: order_date
+        description: "Transaction calendar date"
+        tests:
+          - not_null
+      - name: region
+        description: "Sales region"
+        tests:
+          - not_null
+      - name: category
+        description: "Product category"
+        tests:
+          - not_null
+      - name: product_name
+        description: "Merchandise title"
+        tests:
+          - not_null
+      - name: total_revenue
+        description: "Total gross revenue generated"
+        tests:
+          - not_null
+          - non_negative
+      - name: total_orders
+        description: "Distinct order count"
+        tests:
+          - not_null
+          - non_negative
+
+  - name: mart_monthly_revenue
+    description: "Monthly revenue aggregates and MoM growth metrics"
+    columns:
+      - name: year_month
+        description: "Year and month in YYYY-MM format"
+        tests:
+          - unique
+          - not_null
+      - name: total_revenue
+        description: "Aggregated monthly revenue"
+        tests:
+          - not_null
+          - non_negative
+
+  - name: mart_product_performance
+    description: "Product sales rankings by revenue and volume"
+    columns:
+      - name: product_id
+        description: "Primary product SKU"
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Product name"
+        tests:
+          - not_null
+      - name: total_revenue
+        description: "Cumulative revenue for this product"
+        tests:
+          - not_null
+          - non_negative
+      - name: total_units_sold
+        description: "Total physical quantity sold"
+        tests:
+          - not_null
+          - non_negative
+
+  - name: mart_regional_performance
+    description: "Regional territory sales volume and revenue distribution"
+    columns:
+      - name: region
+        description: "Geographic territory"
+        tests:
+          - unique
+          - not_null
+      - name: total_revenue
+        description: "Total sales in this region"
+        tests:
+          - not_null
+          - non_negative

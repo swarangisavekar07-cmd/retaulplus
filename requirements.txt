@@ -1,0 +1,32 @@
+# =====================================================================
+# RetailPulse AI — Modern Automated Retail Data Pipeline Dependencies
+# =====================================================================
+
+# Core Analytical Data Processing
+pandas>=2.1.0
+numpy>=1.25.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Database & Ingestion Connectors
+psycopg2-binary>=2.9.9
+SQLAlchemy>=2.0.0
+
+# Google Cloud BigQuery Data Warehouse
+google-cloud-bigquery>=3.14.0
+google-cloud-core>=2.4.0
+google-auth>=2.23.0
+
+# dbt (Data Build Tool) Transformations
+dbt-core>=1.7.0
+dbt-bigquery>=1.7.0
+
+# Local Analytical Warehouse Replica (DuckDB)
+duckdb>=0.9.0
+
+# Conversational BI & Dashboard Interface
+streamlit>=1.30.0
+plotly>=5.18.0
+
+# Optional Orchestration (when running Airflow standalone outside Docker)
+apache-airflow>=2.8.0

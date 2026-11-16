@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: airbyte_raw
+    description: "Raw ingested retail sales data streamed from PostgreSQL to BigQuery via Airbyte"
+    database: "{{ env_var('GCP_PROJECT_ID', 'retailpulse-demo-project') }}"
+    schema: "{{ env_var('BIGQUERY_RAW_DATASET', 'raw_retailpulse') }}"
+    tables:
+      - name: retail_sales
+        description: "Raw sales transactions synced from source database"
+        columns:
+          - name: order_id
+            description: "Raw alphanumeric order identifier"
+          - name: order_date
+            description: "Order timestamp or string date"
+          - name: customer_id
+            description: "Raw customer ID"
+          - name: customer_name
+            description: "Raw customer name"
+          - name: product_id
+            description: "Raw product SKU"
+          - name: product_name
+            description: "Raw product title"
+          - name: category
+            description: "Merchandise category"
+          - name: region
+            description: "Sales territory"
+          - name: quantity
+            description: "Order quantity"
+          - name: unit_price
+            description: "Price per unit"
+          - name: payment_status
+            description: "Status of transaction payment"

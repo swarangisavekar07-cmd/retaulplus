@@ -1,0 +1,14 @@
+{
+  "name": "RetailPulse BigQuery Destination",
+  "destinationDefinitionId": "ef301139-22a6-44c2-9e2b-78893d142d79",
+  "connectionConfiguration": {
+    "project_id": "${GCP_PROJECT_ID}",
+    "dataset_id": "${BIGQUERY_RAW_DATASET}",
+    "dataset_location": "${GCP_LOCATION}",
+    "credentials_json": "${GCP_CREDENTIALS_JSON}",
+    "loading_method": {
+      "method": "Standard"
+    },
+    "transformation_priority": "interactive"
+  }
+}
